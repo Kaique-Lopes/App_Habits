@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct SplashView: View {
+    
+    @State var state: SplashUIState = .loading
+    
     var body: some View {
-        Text("Ola")
+        switch state {
+        case .loading:
+            Text("Loading")
+        case .goToSignScreen:
+            Text("Tela Login")
+        case .goToHomeScreen:
+            Text("Tela Principal")
+        case .error(let msg):
+            Text("Error: \(msg)")
+        }
     }
 }
 
