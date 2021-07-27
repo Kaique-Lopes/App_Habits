@@ -14,7 +14,15 @@ struct SplashView: View {
     var body: some View {
         switch state {
         case .loading:
-            Text("Loading")
+            ZStack {
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding(20)
+                    .background(Color.white)
+                    .ignoresSafeArea()
+            }
         case .goToSignScreen:
             Text("Tela Login")
         case .goToHomeScreen:
@@ -28,7 +36,7 @@ struct SplashView: View {
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView(state: .error("Error no servidor"))
+        SplashView(state: .loading)
     }
 }
 
