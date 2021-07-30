@@ -50,7 +50,7 @@ extension SplashView {
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView(state: .error("err"))
+        SplashView(state: .error("Falha no servidor !!"))
     }
 }
 
