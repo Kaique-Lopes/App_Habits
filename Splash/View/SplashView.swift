@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SplashView: View {
+    @ObservedObject var viewModel: SplashViewModel
     
-    @State var state: SplashUIState = .loading
     @State var showAlert = true
     
     var body: some View {
-        switch state {
+        switch viewModel.uiState {
         case .loading:
             loadingView()
         case .goToSignScreen:
