@@ -40,7 +40,7 @@ extension SplashView {
             if let error = error {
                 Text("")
                     .alert(isPresented: .constant(true)) {
-                        Alert(title: Text("Habit"), message: Text(error), dismissButton: .default(Text("OK")) {
+                        Alert(title: Text("Habit"), message: Text(error), dismissButton: .default(Text("Fechar")) {
                         })
                     }
             }
