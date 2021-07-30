@@ -10,23 +10,24 @@ import SwiftUI
 struct SplashView: View {
     
     @State var state: SplashUIState = .loading
+    @State var showAlert = true
     
     var body: some View {
         switch state {
         case .loading:
-            LoadingView()
+            loadingView()
         case .goToSignScreen:
             Text("Tela Login")
         case .goToHomeScreen:
             Text("Tela Principal")
         case .error(let msg):
-            Text("Error: \(msg)")
+            loadingView(error: msg)
         }
     }
 }
 
-struct LoadingView: View {
-    var body: some View {
+extension SplashView {
+    func loadingView(error: String? = nil) -> some View {
         ZStack {
             Image("logo")
                 .resizable()
@@ -35,12 +36,21 @@ struct LoadingView: View {
                 .padding(20)
                 .background(Color.white)
                 .ignoresSafeArea()
+            
+            if let error = error {
+                Text("")
+                    .alert(isPresented: .constant(true)) {
+                        Alert(title: Text("Habit"), message: Text(error), dismissButton: .default(Text("OK")) {
+                        })
+                    }
+            }
         }
     }
 }
+
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView(state: .loading)
+        SplashView(state: .error("err"))
     }
 }
 
