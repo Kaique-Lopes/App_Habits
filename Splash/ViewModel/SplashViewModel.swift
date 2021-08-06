@@ -10,5 +10,3 @@ import SwiftUI
 class SplashViewModel: ObservableObject {
     @Published var uiState: SplashUIState = .loading
 }
-
-
